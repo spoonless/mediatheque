@@ -1,21 +1,23 @@
 package com.cgi.poei.mediatheque;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Usager {
 
 	private String id;
 	private String nom;
 	private String prenom;
-	private Date dateNaissance;
+	private LocalDate dateNaissance;
 	private ArrayList<Pret> historiquePrets = new ArrayList<>();
 	
 	public Usager(String id, String prenom, String nom) {
 		this(id, prenom, nom, null);
 	}
 
-	public Usager(String id, String prenom, String nom, Date dateNaissance) {
+	public Usager(String id, String prenom, String nom, LocalDate dateNaissance) {
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -34,36 +36,23 @@ public class Usager {
 		return nom;
 	}
 
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-
 	public String getPrenom() {
 		return prenom;
 	}
 
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
-	}
-
-	public Date getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	public void setDateNaissance(Date dateNaissance) {
-		this.dateNaissance = dateNaissance;
-	}
-
     public void emprunter(Exemplaire exemplaire) {
+    	// TODO parler du prêt
         Pret pret = new Pret(exemplaire, this);
 		historiquePrets.add(pret);
     }
 
-    public Integer getAge() {
+    public Long getAge() {
     	if (dateNaissance != null) {
-    		int anneeNaissance = dateNaissance.getYear();
-    		int anneeCourante = new Date().getYear();
-    		return Integer.valueOf(anneeCourante - anneeNaissance);
+    		return Period.between(dateNaissance, LocalDate.now()).get(ChronoUnit.YEARS);
     	}
     	return null;
 	}

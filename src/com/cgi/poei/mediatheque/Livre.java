@@ -1,14 +1,14 @@
 package com.cgi.poei.mediatheque;
 
-import java.util.Date;
+import java.time.Year;
 
 public class Livre extends Document {
 	
 	private String isbn;
 	private String auteur;
 
-	public Livre(String isbn, String titre, String auteur, String editeur, Date dateEdition) {
-		super(titre, editeur, dateEdition);
+	public Livre(String isbn, String titre, String auteur, String editeur, Year anneeEdition) {
+		super(titre, editeur, anneeEdition);
 		this.isbn = isbn;
 		this.auteur = auteur;
 	}

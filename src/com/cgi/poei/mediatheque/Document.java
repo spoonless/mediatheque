@@ -1,6 +1,6 @@
 package com.cgi.poei.mediatheque;
 
-import java.util.Date;
+import java.time.Year;
 
 public abstract class Document {
 
@@ -8,12 +8,12 @@ public abstract class Document {
 
 	private String titre;
 	private String editeur;
-	private Date dateEdition;
+	private Year anneeEdition;
 	
-	public Document(String titre, String editeur, Date dateEdition) {
+	public Document(String titre, String editeur, Year anneeEdition) {
 		this.titre = titre;
 		this.editeur = editeur;
-		this.dateEdition = dateEdition;
+		this.anneeEdition = anneeEdition;
 	}
 
 	public abstract String getIdentifiant();
@@ -34,12 +34,12 @@ public abstract class Document {
 		this.editeur = editeur;
 	}
 
-	public Date getDateEdition() {
-		return dateEdition;
+	public Year getAnneeEdition() {
+		return anneeEdition;
 	}
-
-	public void setDateEdition(Date dateEdition) {
-		this.dateEdition = dateEdition;
+	
+	public void setAnneeEdition(Year anneeEdition) {
+		this.anneeEdition = anneeEdition;
 	}
 
 	public Exemplaire[] getExemplaires() {

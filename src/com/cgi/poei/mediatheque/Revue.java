@@ -1,13 +1,13 @@
 package com.cgi.poei.mediatheque;
 
-import java.util.Date;
+import java.time.Year;
 
 public class Revue extends Document {
 
 	private String issn;
 
-	public Revue(String issn, String titre, String editeur, Date dateEdition) {
-		super(titre, editeur, dateEdition);
+	public Revue(String issn, String titre, String editeur, Year anneEdition) {
+		super(titre, editeur, anneEdition);
 		this.issn = issn;
 	}
 
