@@ -1,5 +1,6 @@
 package com.cgi.poei.mediatheque;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Usager {
@@ -8,7 +9,14 @@ public class Usager {
 	private String nom;
 	private String prenom;
 	private Date dateNaissance;
-	private Pret[] historiquePrets;
+	private ArrayList<Pret> historiquePrets = new ArrayList<>();
+	
+	public Usager(String id, String prenom, String nom, Date dateNaissance) {
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+	}
 
 	public String getId() {
 		return id;
@@ -42,10 +50,23 @@ public class Usager {
 		this.dateNaissance = dateNaissance;
 	}
 
-	public long getAge() {
+    public void emprunter(Exemplaire exemplaire) {
+        Pret pret = new Pret(exemplaire, this);
+		historiquePrets.add(pret);
+    }
+
+    public long getAge() {
 		int anneeNaissance = dateNaissance.getYear();
 		int anneeCourante = new Date().getYear();
 		return anneeCourante - anneeNaissance;
+	}
+    
+    public ArrayList<Pret> getHistoriquePrets() {
+		return historiquePrets;
+	}
+
+	public String getNomComplet() {
+		return this.prenom + " " + this.nom;
 	}
 
 }

@@ -1,10 +1,17 @@
 package com.cgi.poei.mediatheque;
 
+import java.util.Date;
+
 public class Film extends Document {
 
 	private String realisateur;
-	private String distributeur;
 	private String isbn;
+	
+	public Film(String isbn, String titre, String realisateur, String editeur, Date dateEdition) {
+		super(titre, editeur, dateEdition);
+		this.isbn = isbn;
+		this.realisateur = realisateur;
+	}
 
 	public String getRealisateur() {
 		return realisateur;

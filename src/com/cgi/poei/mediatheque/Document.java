@@ -10,6 +10,12 @@ public abstract class Document {
 	private String editeur;
 	private Date dateEdition;
 	
+	public Document(String titre, String editeur, Date dateEdition) {
+		this.titre = titre;
+		this.editeur = editeur;
+		this.dateEdition = dateEdition;
+	}
+
 	public abstract String getIdentifiant();
 
 	public String getTitre() {
