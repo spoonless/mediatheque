@@ -11,6 +11,10 @@ public class Usager {
 	private Date dateNaissance;
 	private ArrayList<Pret> historiquePrets = new ArrayList<>();
 	
+	public Usager(String id, String prenom, String nom) {
+		this(id, prenom, nom, null);
+	}
+
 	public Usager(String id, String prenom, String nom, Date dateNaissance) {
 		this.id = id;
 		this.nom = nom;
@@ -55,10 +59,13 @@ public class Usager {
 		historiquePrets.add(pret);
     }
 
-    public long getAge() {
-		int anneeNaissance = dateNaissance.getYear();
-		int anneeCourante = new Date().getYear();
-		return anneeCourante - anneeNaissance;
+    public Integer getAge() {
+    	if (dateNaissance != null) {
+    		int anneeNaissance = dateNaissance.getYear();
+    		int anneeCourante = new Date().getYear();
+    		return Integer.valueOf(anneeCourante - anneeNaissance);
+    	}
+    	return null;
 	}
     
     public ArrayList<Pret> getHistoriquePrets() {
