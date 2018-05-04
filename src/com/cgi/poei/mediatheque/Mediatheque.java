@@ -24,6 +24,8 @@ public class Mediatheque {
 								"Erich Gamma & al.", "Vuiber", Year.of(2007));
 		
 		Exemplaire exemplaire = new Exemplaire(livre);
+		System.out.println("Nombre d'exemplaires du document " + livre.getExemplaires().size());
+		
 		usager.emprunter(exemplaire);
 		System.out.println(usager.getHistoriquePrets().get(0));
 	}

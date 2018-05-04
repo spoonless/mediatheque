@@ -6,7 +6,7 @@ public class Exemplaire {
 	
 	public Exemplaire(Document document) {
 		this.document = document;
-		// TODO ajouter l'exemplaire dans le document
+		this.document.getExemplaires().add(this);
 	}
 
 	public Document getDocument() {
