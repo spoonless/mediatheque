@@ -33,5 +33,14 @@ public class Livre extends Document {
 	public void setAuteur(String auteur) {
 		this.auteur = auteur;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Livre) {
+			Livre livre = (Livre) obj;
+			return livre.isbn.equals(this.isbn);
+		}
+		return false;
+	}
 
 }

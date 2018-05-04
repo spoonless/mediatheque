@@ -18,7 +18,7 @@ public class Pret {
         this.dateRetour = new Date(dateEmprunt.getYear(), dateEmprunt.getMonth(), dateEmprunt.getDay() + 14);
     }
 
-	
+    @Override
 	public String toString() {
 		return usager.getNomComplet() + " emprunte " + exemplaire.getDocument().getTitre() + " jusqu'à " + dateRetour;
 	}
