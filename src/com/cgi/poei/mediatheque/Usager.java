@@ -43,9 +43,7 @@ public class Usager {
 		return dateNaissance;
 	}
 
-    public void emprunter(Exemplaire exemplaire) {
-    	// TODO parler du prêt
-        Pret pret = new Pret(exemplaire, this);
+    public void emprunter(Pret pret) {
 		historiquePrets.add(pret);
     }
 

@@ -25,8 +25,9 @@ public class Mediatheque {
 		
 		Exemplaire exemplaire = new Exemplaire(livre);
 		System.out.println("Nombre d'exemplaires du document " + livre.getExemplaires().size());
-		
-		usager.emprunter(exemplaire);
+
+		Pret pret = new Pret(exemplaire, usager, 14);
+		usager.emprunter(pret);
 		System.out.println(usager.getHistoriquePrets().get(0));
 	}
 }

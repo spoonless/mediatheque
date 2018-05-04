@@ -10,12 +10,11 @@ public class Pret {
 	private final LocalDate dateEmprunt;
 	private final LocalDate dateRetour;
 	
-    public Pret(Exemplaire exemplaire, Usager usager) {
+    public Pret(Exemplaire exemplaire, Usager usager, int dureePretEnJour) {
         this.exemplaire = exemplaire;
         this.usager = usager;
         this.dateEmprunt = LocalDate.now();
-        // TODO parler du 14
-        this.dateRetour = this.dateEmprunt.plusDays(14);
+        this.dateRetour = this.dateEmprunt.plusDays(dureePretEnJour);
     }
     
     public boolean isDepasse() {
