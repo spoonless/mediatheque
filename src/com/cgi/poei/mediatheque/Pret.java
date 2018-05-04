@@ -2,7 +2,6 @@ package com.cgi.poei.mediatheque;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 
 public class Pret {
 	
@@ -16,7 +15,7 @@ public class Pret {
         this.usager = usager;
         this.dateEmprunt = LocalDate.now();
         // TODO parler du 14
-        this.dateRetour = this.dateEmprunt.plus(14, ChronoUnit.DAYS);
+        this.dateRetour = this.dateEmprunt.plusDays(14);
     }
     
     public boolean isDepasse() {

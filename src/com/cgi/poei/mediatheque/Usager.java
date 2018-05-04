@@ -2,7 +2,6 @@ package com.cgi.poei.mediatheque;
 
 import java.time.LocalDate;
 import java.time.Period;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 
 public class Usager {
@@ -50,9 +49,10 @@ public class Usager {
 		historiquePrets.add(pret);
     }
 
-    public Long getAge() {
+    public Integer getAge() {
     	if (dateNaissance != null) {
-    		return Period.between(dateNaissance, LocalDate.now()).get(ChronoUnit.YEARS);
+    		Period periode = Period.between(dateNaissance, LocalDate.now());
+			return periode.getYears();
     	}
     	return null;
 	}
