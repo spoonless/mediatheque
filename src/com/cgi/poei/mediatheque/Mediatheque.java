@@ -6,28 +6,34 @@ import java.time.Year;
 import java.util.ArrayList;
 
 public class Mediatheque {
-	
+
 	private final ArrayList<Document> documents = new ArrayList<>();
 	private final ArrayList<Usager> usagers = new ArrayList<>();
 
 	public ArrayList<Document> getDocuments() {
 		return documents;
 	}
-	
+
 	public ArrayList<Usager> getUsagers() {
 		return usagers;
 	}
-	
-	public static void main(String[] args) {
-		Usager usager = new Usager("MBJ5555", "David", "Gayerie", LocalDate.of(1973, Month.OCTOBER, 15));
-		Livre livre = new Livre("978-2-7117-8644-2", "Design Patterns", 
-								"Erich Gamma & al.", "Vuiber", Year.of(2007));
-		
-		Exemplaire exemplaire = new Exemplaire(livre);
-		System.out.println("Nombre d'exemplaires du document " + livre.getExemplaires().size());
 
-		Pret pret = new Pret(exemplaire, usager, 14);
-		usager.emprunter(pret);
-		System.out.println(usager.getHistoriquePrets().get(0));
+	public static void main(String[] args) {
+		try {
+			Usager usager = new Usager("MBJ5555", "David", "Gayerie", LocalDate.of(1973, Month.OCTOBER, 15));
+			Livre livre = new Livre("978-2-7117-8644-2", "Design Patterns", "Erich Gamma & al.", "Vuiber",
+					Year.of(2007));
+
+			Exemplaire exemplaire = new Exemplaire(livre);
+			System.out.println("Nombre d'exemplaires du document " + livre.getExemplaires().size());
+
+			for (int i = 0; i < 128; ++i) {
+				Pret pret = new Pret(exemplaire, usager, 14);
+				usager.emprunter(pret);
+			}
+			System.out.println(usager.getHistoriquePrets().get(0));
+		} catch (MediathequeException | IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 }

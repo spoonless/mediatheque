@@ -17,6 +17,9 @@ public class Usager {
 	}
 
 	public Usager(String id, String prenom, String nom, LocalDate dateNaissance) {
+		if (id == null) {
+			throw new IllegalArgumentException("L'id ne peut pas être nul");
+		}
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -43,8 +46,11 @@ public class Usager {
 		return dateNaissance;
 	}
 
-    public void emprunter(Pret pret) {
-		historiquePrets.add(pret);
+    public void emprunter(Pret pret) throws QuotatEmpruntDepasseException {
+    	if (historiquePrets.size() >= 6) {
+    		throw new QuotatEmpruntDepasseException("Prêt de " + historiquePrets.size() + " exemplaires atteint");
+    	}
+    	historiquePrets.add(pret);
     }
 
     public Integer getAge() {
