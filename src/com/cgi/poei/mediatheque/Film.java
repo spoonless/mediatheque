@@ -5,6 +5,7 @@ import java.time.Year;
 public class Film extends Document {
 
 	public static final int NB_PRETS_FILMS_AUTORISES = 3;
+	private static int nbFilms;
 	
 	private String realisateur;
 	private String isbn;
@@ -13,6 +14,7 @@ public class Film extends Document {
 		super(titre, editeur, anneeEdition);
 		this.isbn = isbn;
 		this.realisateur = realisateur;
+		Film.nbFilms++;
 	}
 
 	public String getRealisateur() {
@@ -36,4 +38,7 @@ public class Film extends Document {
 		this.isbn = isbn;
 	}
 	
+	public static int getNbFilms() {
+		return nbFilms;
+	}
 }

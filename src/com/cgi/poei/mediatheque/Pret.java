@@ -12,7 +12,11 @@ public class Pret {
 	private final LocalDate dateEmprunt;
 	private final LocalDate dateRetour;
 	
-    public Pret(Exemplaire exemplaire, Usager usager, int dureePretEnJour) throws ExemplaireDejaEmprunteException {
+	public static boolean isQuotaDepasse(int size) {
+		return size > NB_PRETS_AUTORISES;
+	}
+
+	public Pret(Exemplaire exemplaire, Usager usager, int dureePretEnJour) throws ExemplaireDejaEmprunteException {
         this.exemplaire = exemplaire;
         this.usager = usager;
         this.dateEmprunt = LocalDate.now();
@@ -35,6 +39,4 @@ public class Pret {
 			   exemplaire.getDocument().getTitre() + 
 			   " jusqu'au " + dateTimeFormatter.format(dateRetour);
 	}
-
-	
 }

@@ -47,12 +47,19 @@ public class Usager {
 	}
 
 	public void emprunter(Pret pret) throws QuotaEmpruntDepasseException {
-		if (prets.size() >= Pret.NB_PRETS_AUTORISES) {
+		if (Pret.isQuotaDepasse(this.prets.size())) {
 			throw new QuotaEmpruntDepasseException("Prêt de " + prets.size() + " exemplaires atteint");
 		}
 		verifierQuotaFilmDepasse(pret);
 		prets.add(pret);
 	}
+	
+	/*
+	 * TODO implémenter la méthode retourner
+	public Pret retourner(String codePret) throws PasEmprunteException {
+		
+	}
+	 */
 
 	private void verifierQuotaFilmDepasse(Pret pret) throws QuotaEmpruntFilmDepasseException {
 		if (pret.getExemplaire().getDocument() instanceof Film && getNbFilmsEmprutes() == Film.NB_PRETS_FILMS_AUTORISES) {
