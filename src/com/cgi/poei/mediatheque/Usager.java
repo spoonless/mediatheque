@@ -63,12 +63,12 @@ public class Usager {
 	 */
 
 	private void verifierQuotaFilmDepasse(Pret pret) throws QuotaEmpruntFilmDepasseException {
-		if (pret.getExemplaire().getDocument() instanceof Film && getNbFilmsEmprutes() == Film.NB_PRETS_FILMS_AUTORISES) {
+		if (pret.getExemplaire().getDocument() instanceof Film && getNbFilmsEmpruntes() == Film.NB_PRETS_FILMS_AUTORISES) {
 			throw new QuotaEmpruntFilmDepasseException();
 		}
 	}
 
-	private int getNbFilmsEmprutes() {
+	private int getNbFilmsEmpruntes() {
 		int nbFilmsEmpruntes = 0;
 		for (Pret p : prets) {
 			if (p.getExemplaire().getDocument() instanceof Film) {
