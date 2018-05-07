@@ -8,7 +8,7 @@ public class Pret {
 	public static final int NB_PRETS_AUTORISES = 6;
 	
 	private final Exemplaire exemplaire;
-	private final Usager usager;
+	private final Emprunteur emprunteur;
 	private final LocalDate dateEmprunt;
 	private final LocalDate dateRetour;
 	
@@ -16,9 +16,9 @@ public class Pret {
 		return size > NB_PRETS_AUTORISES;
 	}
 
-	public Pret(Exemplaire exemplaire, Usager usager, int dureePretEnJour) throws ExemplaireDejaEmprunteException {
+	public Pret(Exemplaire exemplaire, Emprunteur emprunteur, int dureePretEnJour) throws ExemplaireDejaEmprunteException {
         this.exemplaire = exemplaire;
-        this.usager = usager;
+        this.emprunteur = emprunteur;
         this.dateEmprunt = LocalDate.now();
         this.dateRetour = this.dateEmprunt.plusDays(dureePretEnJour);
         this.exemplaire.setPret(this);
@@ -35,7 +35,7 @@ public class Pret {
     @Override
 	public String toString() {
     	DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM YYYY");
-		return usager.getNomComplet() + " emprunte " + 
+		return emprunteur.getNomComplet() + " emprunte " + 
 			   exemplaire.getDocument().getTitre() + 
 			   " jusqu'au " + dateTimeFormatter.format(dateRetour);
 	}

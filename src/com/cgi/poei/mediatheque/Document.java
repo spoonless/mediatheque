@@ -2,10 +2,11 @@ package com.cgi.poei.mediatheque;
 
 import java.time.Year;
 import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Document {
 
-	private ArrayList<Exemplaire> exemplaires = new ArrayList<>();
+	private List<Exemplaire> exemplaires = new ArrayList<>();
 
 	private Section section;
 	private String titre;
@@ -49,7 +50,7 @@ public abstract class Document {
 		this.anneeEdition = anneeEdition;
 	}
 
-	public ArrayList<Exemplaire> getExemplaires() {
+	public List<Exemplaire> getExemplaires() {
 		return exemplaires;
 	}
 

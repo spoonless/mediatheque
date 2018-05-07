@@ -5,6 +5,7 @@ public class Exemplaire {
 	private final String code;
 	private final Document document;
 	private Pret pret;
+	private NotificateurDeRetourDePret notificateurDeRetourDePret;
 	
 	public Exemplaire(String code, Document document) {
 		this.code = code;
@@ -27,10 +28,17 @@ public class Exemplaire {
 	public String getCode() {
 		return code;
 	}
-
+	
+	public void setNotificateurDeRetourDePret(NotificateurDeRetourDePret notificateurDeRetourDePret) {
+		this.notificateurDeRetourDePret = notificateurDeRetourDePret;
+	}
+	
 	public void setPret(Pret pret) throws ExemplaireDejaEmprunteException {
-		if (isEmprunte()) {
+		if (pret != null && isEmprunte()) {
 			throw new ExemplaireDejaEmprunteException(this);
+		}
+		if (pret == null && this.notificateurDeRetourDePret != null) {
+			this.notificateurDeRetourDePret.notifierRetour(this);
 		}
 		this.pret = pret;
 	}

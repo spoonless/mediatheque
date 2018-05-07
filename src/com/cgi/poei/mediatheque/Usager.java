@@ -3,14 +3,15 @@ package com.cgi.poei.mediatheque;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Usager {
+public class Usager implements Emprunteur {
 
 	private final String id;
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance;
-	private ArrayList<Pret> prets = new ArrayList<>();
+	private List<Pret> prets = new ArrayList<>();
 
 	public Usager(String id, String prenom, String nom) {
 		this(id, prenom, nom, null);
@@ -42,6 +43,7 @@ public class Usager {
 		return dateNaissance;
 	}
 
+	@Override
 	public void emprunter(Pret pret) throws QuotaEmpruntDepasseException, PasAssezAgeException {
 		Section section = pret.getExemplaire().getDocument().getSection();
 		if (! section.isAssezAge(this)) {
@@ -90,7 +92,7 @@ public class Usager {
 		return null;
 	}
 
-	public ArrayList<Pret> getPrets() {
+	public List<Pret> getPrets() {
 		return prets;
 	}
 
