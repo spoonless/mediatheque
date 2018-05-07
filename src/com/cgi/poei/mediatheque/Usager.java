@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Usager {
 
-	private String id;
+	private final String id;
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance;
@@ -28,10 +28,6 @@ public class Usager {
 
 	public String getId() {
 		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
 	}
 
 	public String getNom() {
@@ -57,6 +53,11 @@ public class Usager {
 	/*
 	 * TODO implémenter la méthode retourner
 	public Pret retourner(String codeExemplaire) throws PasEmprunteException {
+		pour chaque prêt de la liste
+			est-ce que l'exemplaire du prêt a comme code codeExemplaire
+	
+		enlever l'élément de la liste
+		retourner l'élément supprimé
 		
 	}
 	 */
