@@ -4,6 +4,8 @@ import java.time.Year;
 
 public class Film extends Document {
 
+	public static final int NB_PRETS_FILMS_AUTORISES = 3;
+	
 	private String realisateur;
 	private String isbn;
 	

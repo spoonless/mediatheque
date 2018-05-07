@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 
 public class Pret {
 	
+	public static final int NB_PRETS_AUTORISES = 6;
+	
 	private final Exemplaire exemplaire;
 	private final Usager usager;
 	private final LocalDate dateEmprunt;
@@ -21,6 +23,10 @@ public class Pret {
     public boolean isDepasse() {
     	return this.dateRetour.isBefore(LocalDate.now());
     }
+    
+    public Exemplaire getExemplaire() {
+		return exemplaire;
+	}
 
     @Override
 	public String toString() {

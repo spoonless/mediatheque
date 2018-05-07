@@ -11,7 +11,7 @@ public class Usager {
 	private String prenom;
 	private LocalDate dateNaissance;
 	private ArrayList<Pret> prets = new ArrayList<>();
-	
+
 	public Usager(String id, String prenom, String nom) {
 		this(id, prenom, nom, null);
 	}
@@ -46,22 +46,39 @@ public class Usager {
 		return dateNaissance;
 	}
 
-    public void emprunter(Pret pret) throws QuotatEmpruntDepasseException {
-    	if (prets.size() >= 6) {
-    		throw new QuotatEmpruntDepasseException("Prêt de " + prets.size() + " exemplaires atteint");
-    	}
-    	prets.add(pret);
-    }
-
-    public Integer getAge() {
-    	if (dateNaissance != null) {
-    		Period periode = Period.between(dateNaissance, LocalDate.now());
-			return periode.getYears();
-    	}
-    	return null;
+	public void emprunter(Pret pret) throws QuotaEmpruntDepasseException {
+		if (prets.size() >= Pret.NB_PRETS_AUTORISES) {
+			throw new QuotaEmpruntDepasseException("Prêt de " + prets.size() + " exemplaires atteint");
+		}
+		verifierQuotaFilmDepasse(pret);
+		prets.add(pret);
 	}
-    
-    public ArrayList<Pret> getPrets() {
+
+	private void verifierQuotaFilmDepasse(Pret pret) throws QuotaEmpruntFilmDepasseException {
+		if (pret.getExemplaire().getDocument() instanceof Film && getNbFilmsEmprutes() == Film.NB_PRETS_FILMS_AUTORISES) {
+			throw new QuotaEmpruntFilmDepasseException();
+		}
+	}
+
+	private int getNbFilmsEmprutes() {
+		int nbFilmsEmpruntes = 0;
+		for (Pret p : prets) {
+			if (p.getExemplaire().getDocument() instanceof Film) {
+				nbFilmsEmpruntes++;
+			}
+		}
+		return nbFilmsEmpruntes;
+	}
+
+	public Integer getAge() {
+		if (dateNaissance != null) {
+			Period periode = Period.between(dateNaissance, LocalDate.now());
+			return periode.getYears();
+		}
+		return null;
+	}
+
+	public ArrayList<Pret> getPrets() {
 		return prets;
 	}
 

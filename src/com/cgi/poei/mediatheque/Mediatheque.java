@@ -23,14 +23,21 @@ public class Mediatheque {
 			Usager usager = new Usager("MBJ5555", "David", "Gayerie", LocalDate.of(1973, Month.OCTOBER, 15));
 			Livre livre = new Livre("978-2-7117-8644-2", "Design Patterns", "Erich Gamma & al.", "Vuiber",
 					Year.of(2007));
+			
+			Film film1 = new Film("213123332", "Princess Bride", "Rob Reiner", "20th Century Fox", Year.of(1987));
+			Film film2 = new Film("213123332", "Princess Bride 2", "Rob Reiner", "20th Century Fox", Year.of(1993));
+			Film film3 = new Film("213123332", "Princess Bride 3", "Rob Reiner", "20th Century Fox", Year.of(1999));
 
-			Exemplaire exemplaire = new Exemplaire("12346789", livre);
-			System.out.println("Nombre d'exemplaires du document " + livre.getExemplaires().size());
+			Exemplaire exemplaire = new Exemplaire("12346789", film1);
+			Exemplaire exemplaire1 = new Exemplaire("22346789", film2);
+			Exemplaire exemplaire2 = new Exemplaire("32346789", film3);
+			Exemplaire exemplaire3 = new Exemplaire("42346789", film3);
 
-			for (int i = 0; i < 128; ++i) {
-				Pret pret = new Pret(exemplaire, usager, 14);
-				usager.emprunter(pret);
-			}
+			usager.emprunter(new Pret(exemplaire, usager, 14));
+			usager.emprunter(new Pret(exemplaire1, usager, 14));
+			usager.emprunter(new Pret(exemplaire2, usager, 14));
+			usager.emprunter(new Pret(exemplaire3, usager, 14));
+
 			System.out.println(usager.getPrets().get(0));
 		} catch (MediathequeException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
