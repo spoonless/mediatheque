@@ -19,3 +19,7 @@ Règles pour l'emprunt
 
 * Un usager ne peut pas emprunter plus de 6 exemplaires.
 * Un usager ne peut pas emprunter plus de 3 films (exception particulière)
+* Un usager peut emprunter des exemplaires suivant son âge :
+	* Jeunesse :jusqu'à de 0 ans
+	* Adulte : à partir de 14 ans
+	* Tout public : quel que soit l'âge

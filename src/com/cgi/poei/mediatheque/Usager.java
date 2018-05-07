@@ -42,7 +42,10 @@ public class Usager {
 		return dateNaissance;
 	}
 
-	public void emprunter(Pret pret) throws QuotaEmpruntDepasseException {
+	public void emprunter(Pret pret) throws QuotaEmpruntDepasseException, PasAssezAgeException {
+		if (pret.getExemplaire().getDocument().getSection().isAssezAge(this)) {
+			throw new PasAssezAgeException(18);
+		}
 		if (Pret.isQuotaDepasse(this.prets.size())) {
 			throw new QuotaEmpruntDepasseException("Prêt de " + prets.size() + " exemplaires atteint");
 		}

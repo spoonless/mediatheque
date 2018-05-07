@@ -7,14 +7,20 @@ public abstract class Document {
 
 	private ArrayList<Exemplaire> exemplaires = new ArrayList<>();
 
+	private Section section = Section.TOUT_PUBLIC;
 	private String titre;
 	private String editeur;
 	private Year anneeEdition;
 	
 	public Document(String titre, String editeur, Year anneeEdition) {
+		this(titre, editeur, anneeEdition, null);
+	}
+
+	public Document(String titre, String editeur, Year anneeEdition, Section section) {
 		this.titre = titre;
 		this.editeur = editeur;
 		this.anneeEdition = anneeEdition;
+		this.section = section;
 	}
 
 	public abstract String getIdentifiant();
@@ -49,6 +55,10 @@ public abstract class Document {
 
 	public void setExemplaires(ArrayList<Exemplaire> exemplaires) {
 		this.exemplaires = exemplaires;
+	}
+	
+	public Section getSection() {
+		return section;
 	}
 
 }
