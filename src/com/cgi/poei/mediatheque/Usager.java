@@ -56,7 +56,7 @@ public class Usager {
 	
 	/*
 	 * TODO implémenter la méthode retourner
-	public Pret retourner(String codePret) throws PasEmprunteException {
+	public Pret retourner(String codeExemplaire) throws PasEmprunteException {
 		
 	}
 	 */
