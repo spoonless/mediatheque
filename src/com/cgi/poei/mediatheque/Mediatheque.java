@@ -24,16 +24,17 @@ public class Mediatheque {
 			Livre livre = new Livre("978-2-7117-8644-2", "Design Patterns", "Erich Gamma & al.", "Vuiber",
 					Year.of(2007));
 
-			Exemplaire exemplaire = new Exemplaire(livre);
+			Exemplaire exemplaire = new Exemplaire("12346789", livre);
 			System.out.println("Nombre d'exemplaires du document " + livre.getExemplaires().size());
 
 			for (int i = 0; i < 128; ++i) {
 				Pret pret = new Pret(exemplaire, usager, 14);
 				usager.emprunter(pret);
 			}
-			System.out.println(usager.getHistoriquePrets().get(0));
+			System.out.println(usager.getPrets().get(0));
 		} catch (MediathequeException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}	
 	}
 }

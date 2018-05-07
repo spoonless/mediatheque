@@ -10,7 +10,7 @@ public class Usager {
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance;
-	private ArrayList<Pret> historiquePrets = new ArrayList<>();
+	private ArrayList<Pret> prets = new ArrayList<>();
 	
 	public Usager(String id, String prenom, String nom) {
 		this(id, prenom, nom, null);
@@ -47,10 +47,10 @@ public class Usager {
 	}
 
     public void emprunter(Pret pret) throws QuotatEmpruntDepasseException {
-    	if (historiquePrets.size() >= 6) {
-    		throw new QuotatEmpruntDepasseException("Prêt de " + historiquePrets.size() + " exemplaires atteint");
+    	if (prets.size() >= 6) {
+    		throw new QuotatEmpruntDepasseException("Prêt de " + prets.size() + " exemplaires atteint");
     	}
-    	historiquePrets.add(pret);
+    	prets.add(pret);
     }
 
     public Integer getAge() {
@@ -61,8 +61,8 @@ public class Usager {
     	return null;
 	}
     
-    public ArrayList<Pret> getHistoriquePrets() {
-		return historiquePrets;
+    public ArrayList<Pret> getPrets() {
+		return prets;
 	}
 
 	public String getNomComplet() {

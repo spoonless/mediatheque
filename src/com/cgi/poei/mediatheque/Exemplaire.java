@@ -2,10 +2,12 @@ package com.cgi.poei.mediatheque;
 
 public class Exemplaire {
 
+	private final String code;
 	private final Document document;
 	private Pret pret;
 	
-	public Exemplaire(Document document) {
+	public Exemplaire(String code, Document document) {
+		this.code = code;
 		this.document = document;
 		this.document.getExemplaires().add(this);
 	}
@@ -20,6 +22,10 @@ public class Exemplaire {
 
 	public Pret getPret() {
 		return pret;
+	}
+	
+	public String getCode() {
+		return code;
 	}
 
 	public void setPret(Pret pret) throws ExemplaireDejaEmprunteException {

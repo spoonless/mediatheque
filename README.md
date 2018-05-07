@@ -14,4 +14,8 @@ Un exemplaire est un document et parmi les documents, on trouve :
 * livre (titre, auteur, éditeur, date d'édition, ISBN)
 * revue (titre, éditeur, date d'édition, ISSN)
 * film (titre, réalisateur, distributeur, date de distribution, ISBN)
-* musique (titre, compositeur, date d'édition, éditeur, Numéro)
+
+Règles pour l'emprunt
+
+* Un usager ne peut pas emprunter plus de 6 exemplaires.
+* Un usager ne peut pas emprunter plus de 3 films (exception particulière)
