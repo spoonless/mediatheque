@@ -21,12 +21,12 @@ public class Mediatheque {
 	public static void main(String[] args) {
 
 		try {
-			Usager usager = new Usager("MBJ5555", "David", "Gayerie", LocalDate.of(1973, Month.OCTOBER, 15));
+			Usager usager = new Usager("MBJ5555", "David", "Gayerie", LocalDate.of(2015, Month.OCTOBER, 15));
 			Livre livre = new Livre("978-2-7117-8644-2", "Design Patterns", "Erich Gamma & al.", "Vuiber",
 					Year.of(2007));
 			
 			Film film1 = new Film("213123332", "Princess Bride", "Rob Reiner", "20th Century Fox", Year.of(1987));
-			Film film2 = new Film("213123332", "Princess Bride 2", "Rob Reiner", "20th Century Fox", Year.of(1993));
+			Film film2 = new Film("213123332", "Princess Bride 2", "Rob Reiner", "20th Century Fox", Year.of(1993), Section.ADULTE);
 			Film film3 = new Film("213123332", "Princess Bride 3", "Rob Reiner", "20th Century Fox", Year.of(1999));
 			
 			System.out.println("Nombre de films : " + Film.getNbFilms());
@@ -45,6 +45,6 @@ public class Mediatheque {
 		} catch (MediathequeException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
-		}	
+		}
 	}
 }

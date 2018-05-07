@@ -11,7 +11,11 @@ public class Film extends Document {
 	private String isbn;
 	
 	public Film(String isbn, String titre, String realisateur, String editeur, Year anneeEdition) {
-		super(titre, editeur, anneeEdition);
+		this(isbn, titre, realisateur, editeur, anneeEdition, Section.TOUT_PUBLIC);
+	}
+
+	public Film(String isbn, String titre, String realisateur, String editeur, Year anneeEdition, Section section) {
+		super(titre, editeur, anneeEdition, section);
 		this.isbn = isbn;
 		this.realisateur = realisateur;
 		Film.nbFilms++;

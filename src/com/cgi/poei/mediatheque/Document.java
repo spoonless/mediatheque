@@ -7,13 +7,13 @@ public abstract class Document {
 
 	private ArrayList<Exemplaire> exemplaires = new ArrayList<>();
 
-	private Section section = Section.TOUT_PUBLIC;
+	private Section section;
 	private String titre;
 	private String editeur;
 	private Year anneeEdition;
 	
 	public Document(String titre, String editeur, Year anneeEdition) {
-		this(titre, editeur, anneeEdition, null);
+		this(titre, editeur, anneeEdition, Section.TOUT_PUBLIC);
 	}
 
 	public Document(String titre, String editeur, Year anneeEdition, Section section) {

@@ -43,8 +43,9 @@ public class Usager {
 	}
 
 	public void emprunter(Pret pret) throws QuotaEmpruntDepasseException, PasAssezAgeException {
-		if (pret.getExemplaire().getDocument().getSection().isAssezAge(this)) {
-			throw new PasAssezAgeException(18);
+		Section section = pret.getExemplaire().getDocument().getSection();
+		if (! section.isAssezAge(this)) {
+			throw new PasAssezAgeException(section.getAgeMinimum());
 		}
 		if (Pret.isQuotaDepasse(this.prets.size())) {
 			throw new QuotaEmpruntDepasseException("Prêt de " + prets.size() + " exemplaires atteint");

@@ -3,7 +3,6 @@ package com.cgi.poei.mediatheque;
 import java.time.Year;
 
 public class Livre extends Document {
-	
 	private String isbn;
 	private String auteur;
 
