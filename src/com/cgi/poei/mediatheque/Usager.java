@@ -6,6 +6,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import com.cgi.poei.mediatheque.document.Film;
+import com.cgi.poei.mediatheque.exception.PasAssezAgeException;
+import com.cgi.poei.mediatheque.exception.QuotaEmpruntDepasseException;
+import com.cgi.poei.mediatheque.exception.QuotaEmpruntFilmDepasseException;
+
 public class Usager implements Emprunteur {
 
 	private final String id;

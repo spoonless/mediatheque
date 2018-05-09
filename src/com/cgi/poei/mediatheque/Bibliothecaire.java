@@ -4,6 +4,9 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cgi.poei.mediatheque.document.Document;
+import com.cgi.poei.mediatheque.document.Livre;
+
 public class Bibliothecaire {
 	
 	public static void main(String[] args) {

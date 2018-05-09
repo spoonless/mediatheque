@@ -1,6 +1,8 @@
-package com.cgi.poei.mediatheque;
+package com.cgi.poei.mediatheque.document;
 
 import java.time.Year;
+
+import com.cgi.poei.mediatheque.Section;
 
 public class Film extends Document {
 

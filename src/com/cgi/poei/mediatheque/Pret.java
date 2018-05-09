@@ -3,6 +3,8 @@ package com.cgi.poei.mediatheque;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.cgi.poei.mediatheque.exception.ExemplaireDejaEmprunteException;
+
 public class Pret {
 	
 	public static final int NB_PRETS_AUTORISES = 6;

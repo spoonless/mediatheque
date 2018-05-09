@@ -2,6 +2,9 @@ package com.cgi.poei.mediatheque;
 
 import java.util.ArrayList;
 
+import com.cgi.poei.mediatheque.exception.PasAssezAgeException;
+import com.cgi.poei.mediatheque.exception.QuotaEmpruntDepasseException;
+
 public class Association implements Emprunteur {
 
 	@Override

@@ -1,4 +1,4 @@
-package com.cgi.poei.mediatheque;
+package com.cgi.poei.mediatheque.document;
 
 import java.time.Year;
 

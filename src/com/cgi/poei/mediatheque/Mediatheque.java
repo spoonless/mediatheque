@@ -6,6 +6,11 @@ import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.cgi.poei.mediatheque.document.Document;
+import com.cgi.poei.mediatheque.document.Film;
+import com.cgi.poei.mediatheque.document.Livre;
+import com.cgi.poei.mediatheque.exception.MediathequeException;
+
 public class Mediatheque {
 
 	private final List<Document> documents = new ArrayList<>();

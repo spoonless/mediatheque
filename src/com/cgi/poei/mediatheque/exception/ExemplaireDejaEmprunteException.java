@@ -1,4 +1,6 @@
-package com.cgi.poei.mediatheque;
+package com.cgi.poei.mediatheque.exception;
+
+import com.cgi.poei.mediatheque.Exemplaire;
 
 public class ExemplaireDejaEmprunteException extends MediathequeException {
 

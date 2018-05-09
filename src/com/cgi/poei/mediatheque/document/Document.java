@@ -1,8 +1,11 @@
-package com.cgi.poei.mediatheque;
+package com.cgi.poei.mediatheque.document;
 
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.cgi.poei.mediatheque.Exemplaire;
+import com.cgi.poei.mediatheque.Section;
 
 public abstract class Document {
 

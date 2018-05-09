@@ -1,5 +1,8 @@
 package com.cgi.poei.mediatheque;
 
+import com.cgi.poei.mediatheque.document.Document;
+import com.cgi.poei.mediatheque.exception.ExemplaireDejaEmprunteException;
+
 public class Exemplaire {
 
 	private final String code;

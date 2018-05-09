@@ -1,4 +1,4 @@
-package com.cgi.poei.mediatheque;
+package com.cgi.poei.mediatheque.exception;
 
 public class MediathequeException extends Exception {
 	
