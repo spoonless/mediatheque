@@ -26,17 +26,26 @@ public class Mediatheque {
 			Livre livre = new Livre("978-2-7117-8644-2", "Design Patterns", "Erich Gamma & al.", "Vuiber",
 					Year.of(2007));
 			
-			Film film1 = new Film("213123332", "Princess Bride", "Rob Reiner", "20th Century Fox", Year.of(1987));
+			Film film = new Film("213123332", "Princess Bride", "Rob Reiner", "20th Century Fox", Year.of(1987));
 			
 			System.out.println("Nombre de films : " + Film.getNbFilms());
 
-			Exemplaire exemplaire = new Exemplaire("12346789", film1);
-			exemplaire.setNotificateurDeRetourDePret(new SimpleNotificateur());
-
+			Exemplaire exemplaire = new Exemplaire("12346789", film);
 			emprunteur.emprunter(new Pret(exemplaire, emprunteur, 14));
 
-			System.out.println(emprunteur.getPrets().get(0));
+			Exemplaire exemplaire2 = new Exemplaire("22346789", livre);
+			emprunteur.emprunter(new Pret(exemplaire2, emprunteur, 10));
 			
+			List<Pret> prets = emprunteur.getPrets();
+			System.out.println(prets);
+			
+			
+			prets.sort((p1, p2) -> p1.getDateRetour().compareTo(p2.getDateRetour()));
+			
+			
+			System.out.println(prets);
+			System.out.println(emprunteur.getPrets());
+
 		} catch (MediathequeException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 			e.printStackTrace();

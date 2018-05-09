@@ -61,5 +61,10 @@ public abstract class Document {
 	public Section getSection() {
 		return section;
 	}
+	
+	@Override
+	public String toString() {
+		return titre;
+	}
 
 }

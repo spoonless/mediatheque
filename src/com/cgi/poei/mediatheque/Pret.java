@@ -31,6 +31,10 @@ public class Pret {
     public Exemplaire getExemplaire() {
 		return exemplaire;
 	}
+    
+    public LocalDate getDateRetour() {
+		return dateRetour;
+	}
 
     @Override
 	public String toString() {

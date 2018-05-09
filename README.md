@@ -23,3 +23,22 @@ Règles pour l'emprunt
 	* Jeunesse :jusqu'à de 0 ans
 	* Adulte : à partir de 14 ans
 	* Tout public : quel que soit l'âge
+
+Idées TODO
+
+implémenter la méthode pour retourner un exemplaire
+on ne peut pas ramener un exemplaire le dimanche ou le lundi 
+rechercher la liste des exemplaires disponibles pour un document selon son titre (méthode sur Mediatheque)
+un usager ne peut plus emprunter d'exemplaires si un de ses prêts est en retard
+un exemplaire peut avoir les états (énumération) suivants :
+  * disponible
+  * emprunté
+  * perdu
+
+Evolution
+Section : ajouter la section adolescent :  jeunesse, adolescent (15-17), adulte (18 et +)
+
+Nouvelle fonctionnalité
+Ajouter la classe Bibliothecaire (qui N'EST PAS un usager). Les Bibliothécaires et les Usagers peuvent donner leur avis sur une document.
+Un avis est constitué d'une date, d'une note sur 5, d'un commentaire et d'un auteur. Pour l'auteur on peut utiliser une interface.
+

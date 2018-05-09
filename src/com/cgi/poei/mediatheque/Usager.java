@@ -3,6 +3,7 @@ package com.cgi.poei.mediatheque;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Usager implements Emprunteur {
@@ -93,7 +94,7 @@ public class Usager implements Emprunteur {
 	}
 
 	public List<Pret> getPrets() {
-		return prets;
+		return Collections.unmodifiableList(prets);
 	}
 
 	public String getNomComplet() {
