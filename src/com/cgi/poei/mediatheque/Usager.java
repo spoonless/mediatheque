@@ -99,7 +99,7 @@ public class Usager implements Emprunteur {
 	}
 
 	public List<Pret> getPrets() {
-		return Collections.unmodifiableList(prets);
+		return prets;
 	}
 
 	public String getNomComplet() {
