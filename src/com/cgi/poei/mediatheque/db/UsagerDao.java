@@ -7,6 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,11 +57,14 @@ public class UsagerDao {
 	}
 
 	public List<Usager> getUsagers(int ageMin) throws SQLException {
+		LocalDate dateNaissanceParametre = LocalDate.now();
+		dateNaissanceParametre = dateNaissanceParametre.minusYears(ageMin);
+
 		List<Usager> usagers = new ArrayList<>();
 		try(Connection connection = DriverManager.getConnection(DATABASE_CONNECTION_URL, LOGIN, PASSWORD);
-			Statement stmt = connection.createStatement()) {
-			
-			try(ResultSet resultSet = stmt.executeQuery("select code, prenom, nom, dateNaissance from Usager where TIMESTAMPDIFF (YEAR, dateNaissance, NOW()) > " + ageMin)) {
+			PreparedStatement stmt = connection.prepareStatement("select code, prenom, nom, dateNaissance from Usager where dateNaissance <= ?")) {
+			stmt.setDate(1, Date.valueOf(dateNaissanceParametre));
+			try(ResultSet resultSet = stmt.executeQuery()) {
 				while(resultSet.next()) {
 					String code = resultSet.getString("code");
 					String nom = resultSet.getString("nom");
