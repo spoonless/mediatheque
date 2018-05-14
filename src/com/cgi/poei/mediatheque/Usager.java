@@ -1,9 +1,9 @@
 package com.cgi.poei.mediatheque;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.cgi.poei.mediatheque.document.Film;
@@ -13,28 +13,32 @@ import com.cgi.poei.mediatheque.exception.QuotaEmpruntFilmDepasseException;
 
 public class Usager implements Emprunteur {
 
-	private final String id;
+	private final String code;
 	private String nom;
 	private String prenom;
 	private LocalDate dateNaissance;
 	private List<Pret> prets = new ArrayList<>();
 
-	public Usager(String id, String prenom, String nom) {
-		this(id, prenom, nom, null);
+	public Usager(String code, String prenom, String nom) {
+		this(code, prenom, nom, (LocalDate) null);
 	}
 
-	public Usager(String id, String prenom, String nom, LocalDate dateNaissance) {
-		if (id == null) {
+	public Usager(String code, String prenom, String nom, Date dateNaissance) {
+		this(code, prenom, nom, dateNaissance == null ? null : dateNaissance.toLocalDate());
+	}
+	
+	public Usager(String code, String prenom, String nom, LocalDate dateNaissance) {
+		if (code == null) {
 			throw new IllegalArgumentException("L'id ne peut pas être nul");
 		}
-		this.id = id;
+		this.code = code;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = dateNaissance;
 	}
 
-	public String getId() {
-		return id;
+	public String getCode() {
+		return code;
 	}
 
 	public String getNom() {
