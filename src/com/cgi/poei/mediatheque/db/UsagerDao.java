@@ -25,14 +25,21 @@ public class UsagerDao {
 	}
 	
 	public void inscrire(Usager usager) throws SQLException {
-		try (Connection connection = creerConnection();
-				PreparedStatement statement = connection.prepareStatement(SQL_INSERT_USAGER);) {
-			statement.setString(1, usager.getCode());
-			statement.setString(2, usager.getNom());
-			statement.setString(3, usager.getPrenom());
-			Date dateNaissance = usager.getDateNaissance() != null ? Date.valueOf(usager.getDateNaissance()): null;
-			statement.setDate(4, dateNaissance);
-			statement.executeUpdate();
+		try (Connection connection = creerConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement(SQL_INSERT_USAGER);) {
+				statement.setString(1, usager.getCode());
+				statement.setString(2, usager.getNom());
+				statement.setString(3, usager.getPrenom());
+				Date dateNaissance = usager.getDateNaissance() != null ? Date.valueOf(usager.getDateNaissance()): null;
+				statement.setDate(4, dateNaissance);
+				statement.executeUpdate();
+				
+				connection.commit();
+			}
+			catch(SQLException e) {
+				connection.rollback();
+				throw e;
+			}
 		}
 	}
 
@@ -71,8 +78,10 @@ public class UsagerDao {
 		return usagers;
 	}
 
-	private Connection creerConnection() throws SQLException {
-		return DriverManager.getConnection(DATABASE_CONNECTION_URL, LOGIN, PASSWORD);
+ 	private Connection creerConnection() throws SQLException {
+		Connection connection = DriverManager.getConnection(DATABASE_CONNECTION_URL, LOGIN, PASSWORD);
+		connection.setAutoCommit(false);
+		return connection;
 	}
 
 }
