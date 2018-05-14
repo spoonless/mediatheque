@@ -45,7 +45,7 @@ public class Mediatheque {
 			System.out.println(prets);
 			
 			
-			prets.sort((p1, p2) -> p1.getDateRetour().compareTo(p2.getDateRetour()));
+			prets.sort(new PretParDateRetourComparator());
 			
 			
 			System.out.println(prets);
