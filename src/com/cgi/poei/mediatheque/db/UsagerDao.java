@@ -23,12 +23,14 @@ public class UsagerDao {
 	}
 	
 	public void inscrire(Usager usager) throws SQLException {
-		String sql = "insert into Usager (code, nom, prenom) values (?, ?, ?)";
+		String sql = "insert into Usager (code, nom, prenom, dateNaissance) values (?, ?, ?, ?)";
 		try (Connection connection = DriverManager.getConnection(DATABASE_CONNECTION_URL, LOGIN, PASSWORD);
 				PreparedStatement statement = connection.prepareStatement(sql);) {
 			statement.setString(1, usager.getCode());
 			statement.setString(2, usager.getNom());
 			statement.setString(3, usager.getPrenom());
+			Date dateNaissance = usager.getDateNaissance() != null ? Date.valueOf(usager.getDateNaissance()): null;
+			statement.setDate(4, dateNaissance);
 			statement.executeUpdate();
 		}
 	}
@@ -52,4 +54,25 @@ public class UsagerDao {
 		}	
 		return usagers;
 	}
+
+	public List<Usager> getUsagers(int ageMin) throws SQLException {
+		List<Usager> usagers = new ArrayList<>();
+		try(Connection connection = DriverManager.getConnection(DATABASE_CONNECTION_URL, LOGIN, PASSWORD);
+			Statement stmt = connection.createStatement()) {
+			
+			try(ResultSet resultSet = stmt.executeQuery("select code, prenom, nom, dateNaissance from Usager where TIMESTAMPDIFF (YEAR, dateNaissance, NOW()) > " + ageMin)) {
+				while(resultSet.next()) {
+					String code = resultSet.getString("code");
+					String nom = resultSet.getString("nom");
+					String prenom = resultSet.getString("prenom");
+					Date dateNaissance = resultSet.getDate("dateNaissance");
+					
+					Usager usager = new Usager(code, prenom, nom, dateNaissance);
+					usagers.add(usager);
+				}
+			}
+		}
+		return usagers;
+	}
+
 }
